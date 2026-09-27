@@ -43,6 +43,49 @@ a {
   color: var(--color-primary);
 }
 
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -48px;
+  background: var(--color-primary);
+  color: white;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  z-index: 10;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 .app-shell {
   max-width: 960px;
   margin: 0 auto;
@@ -65,17 +108,26 @@ a {
   letter-spacing: -0.01em;
 }
 
+a.brand {
+  color: inherit;
+  text-decoration: none;
+}
+
 .brand-mark {
   width: 30px;
   height: 30px;
-  border-radius: 8px;
-  background: linear-gradient(135deg, var(--color-primary), #7c3aed);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 15px;
-  font-weight: 800;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  padding: 4px;
+  color: var(--color-primary);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .hero {
@@ -196,7 +248,7 @@ textarea.jd-input {
 textarea.jd-input:focus {
   outline: none;
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px var(--color-primary-light);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.35);
 }
 
 .char-count {
@@ -358,6 +410,9 @@ textarea.jd-input:focus {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .keyword-chip {
@@ -370,13 +425,14 @@ textarea.jd-input:focus {
 
 .keyword-chip.matched {
   background: var(--color-success-bg);
-  color: var(--color-success);
+  /* Darker than --color-success: 13px text needs 4.5:1 contrast. */
+  color: #15803d;
   border-color: #bbf7d0;
 }
 
 .keyword-chip.missing {
   background: var(--color-fail-bg);
-  color: var(--color-fail);
+  color: #b91c1c;
   border-color: #fecaca;
 }
 
@@ -470,6 +526,112 @@ textarea.jd-input:focus {
 
 .section-block {
   margin-top: 20px;
+}
+
+.keyword-chip small {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.chip-legend,
+.recs-intro {
+  color: var(--color-text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0 0 12px;
+}
+
+.recs-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.recs-item,
+.recs-builder {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 12px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.recs-builder {
+  margin-top: 14px;
+  background: var(--color-primary-light);
+  border-color: #c7d2fe;
+}
+
+.recs-item strong,
+.recs-builder strong {
+  display: block;
+  font-size: 14px;
+}
+
+.recs-item span,
+.recs-builder span {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.recs-builder .btn-primary {
+  padding: 10px 20px;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.btn-link {
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-link:hover {
+  text-decoration: underline;
+}
+
+.affiliate-note {
+  color: var(--color-text-muted);
+  font-size: 12px;
+  margin: 14px 0 0;
+}
+
+.ats-view summary {
+  cursor: pointer;
+  margin: 0;
+}
+
+.ats-view[open] summary {
+  margin-bottom: 12px;
+}
+
+.ats-view pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 12px;
+  line-height: 1.5;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  max-height: 420px;
+  overflow: auto;
+  margin: 0;
+}
+
+.site-footer nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 10px;
 }
 
 .spinner {

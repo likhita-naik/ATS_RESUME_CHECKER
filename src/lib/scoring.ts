@@ -8,6 +8,8 @@ export interface AnalysisResult {
   formatScore: number;
   suggestions: string[];
   resumeWarnings: string[];
+  /** Plain text as extracted from the file — what an ATS parser "sees". */
+  resumeText: string;
 }
 
 const KEYWORD_WEIGHT = 0.65;
@@ -24,6 +26,13 @@ function buildSuggestions(keywordMatch: KeywordMatchResult, formatChecks: Format
   if (topMissing.length > 0) {
     suggestions.push(
       `Add these missing keywords where they genuinely apply: ${topMissing.join(", ")}.`
+    );
+  }
+
+  const underused = keywordMatch.matched.find((k) => k.jdCount >= 3 && k.resumeCount === 1);
+  if (underused) {
+    suggestions.push(
+      `The job description mentions "${underused.term}" ${underused.jdCount} times but your resume only once — show it in an experience bullet, not just the skills list.`
     );
   }
 
@@ -61,5 +70,6 @@ export function analyzeResume(resumeText: string, jobDescription: string, resume
     formatScore,
     suggestions,
     resumeWarnings,
+    resumeText,
   };
 }

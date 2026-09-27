@@ -75,7 +75,7 @@ export const SKILLS_DICTIONARY: string[] = [
   "forecasting", "kpi tracking",
 
   // Finance / operations
-  "financial analysis", "financial modeling", "budgeting", "forecasting",
+  "financial analysis", "financial modeling", "budgeting",
   "accounting", "bookkeeping", "gaap", "audit", "reconciliation",
   "supply chain management", "inventory management", "logistics",
   "process improvement", "six sigma", "lean manufacturing", "quality assurance",
@@ -97,6 +97,64 @@ export const SKILLS_DICTIONARY: string[] = [
   "bachelor's degree", "master's degree", "mba", "computer science",
   "information technology", "certification", "aws certified",
   "pmp certified", "cissp", "comptia",
+
+  // Role-specific additions (used by the keyword pages in src/data/roles.ts)
+  "manual testing", "automation testing", "test case", "regression testing",
+  "api testing", "testng", "appium", "cybersecurity", "network security",
+  "penetration testing", "siem", "vulnerability assessment", "incident response",
+  "firewall", "iso 27001", "user research", "usability testing", "adobe xd",
+  "design systems", "interaction design", "tally", "gst", "taxation", "tds",
+  "accounts payable", "accounts receivable", "financial reporting",
+  "cold calling", "sales pipeline", "business analysis", "user stories",
+  "process mapping", "employee relations", "jetpack compose", "mvvm",
+  "retrofit", "hibernate", "jpa", "maven", "statistics", "mlops", "helm",
+  "ec2", "s3", "iam", "vpc", "go-to-market", "okr", "ms office",
+  "data structures", "junit", "celery", "networking",
+];
+
+// Groups of terms that mean the same thing to a recruiter. The first entry is
+// the display name; any variant in a JD or resume counts as that skill, so
+// "JS" on a resume satisfies "JavaScript" in the JD, and "React.js" + "React"
+// in one JD aren't double-counted.
+// ponytail: hand-curated list, extend as users report false "missing" hits.
+export const SYNONYM_GROUPS: string[][] = [
+  ["javascript", "js", "es6"],
+  ["typescript", "ts"],
+  ["react", "react.js", "reactjs"],
+  ["vue", "vue.js", "vuejs"],
+  ["next.js", "nextjs"],
+  ["node.js", "nodejs"],
+  ["express", "express.js", "expressjs"],
+  ["golang", "go"],
+  ["c#", "csharp"],
+  ["postgresql", "postgres"],
+  ["kubernetes", "k8s"],
+  ["aws", "amazon web services"],
+  ["gcp", "google cloud platform", "google cloud"],
+  ["machine learning", "ml"],
+  ["nlp", "natural language processing"],
+  ["llm", "large language model"],
+  ["generative ai", "genai", "gen ai"],
+  ["ci/cd", "continuous integration", "continuous delivery", "continuous deployment"],
+  ["tdd", "test driven development", "test-driven development"],
+  ["oop", "object oriented programming", "object-oriented programming"],
+  ["spa", "single page application"],
+  ["pwa", "progressive web app"],
+  ["rest api", "restful api"],
+  ["ui/ux design", "ui/ux", "ux design", "ui design"],
+  ["excel", "microsoft excel", "ms excel"],
+  ["power bi", "powerbi"],
+  ["seo", "search engine optimization"],
+  ["sem", "search engine marketing"],
+  ["crm", "customer relationship management"],
+  ["tailwind", "tailwind css", "tailwindcss"],
+  ["scikit-learn", "sklearn"],
+  ["a/b testing", "ab testing", "split testing"],
+  ["bachelor's degree", "bachelors degree", "bachelor's", "bachelor of", "b.tech", "btech", "b.e.", "b.sc", "bsc"],
+  ["master's degree", "masters degree", "master's", "master of", "m.tech", "mtech", "m.sc", "msc"],
+  ["pmp", "pmp certified"],
+  ["cybersecurity", "cyber security", "information security"],
+  ["ms office", "microsoft office"],
 ];
 
 // Generic words that should never be treated as meaningful keywords even

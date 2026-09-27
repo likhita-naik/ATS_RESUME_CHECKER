@@ -17,8 +17,8 @@ export function ScoreGauge({ score, label = "Match score" }: ScoreGaugeProps) {
   const color = colorForScore(clamped);
 
   return (
-    <div className="score-gauge">
-      <svg width="140" height="140" viewBox="0 0 140 140">
+    <div className="score-gauge" role="img" aria-label={`${label}: ${clamped} out of 100`}>
+      <svg width="140" height="140" viewBox="0 0 140 140" aria-hidden="true">
         <circle
           cx="70"
           cy="70"
@@ -40,7 +40,7 @@ export function ScoreGauge({ score, label = "Match score" }: ScoreGaugeProps) {
           style={{ transition: "stroke-dashoffset 0.6s ease" }}
         />
       </svg>
-      <div className="score-gauge-value">
+      <div className="score-gauge-value" aria-hidden="true">
         <span className="score-gauge-number" style={{ color }}>
           {clamped}
         </span>
